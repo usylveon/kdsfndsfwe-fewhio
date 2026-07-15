@@ -838,3 +838,9 @@ body{
 .file3{
     pointer-events:auto;
 }
+
+
+
+.folder{
+    overflow:hidden;
+}
