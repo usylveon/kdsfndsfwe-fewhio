@@ -38,23 +38,24 @@ function resetAnimation(){
 
 
 
-function stopAllMedia(){
+function stopAllMedia() {
 
     const music = document.getElementById("birthdayMusic");
     const video = document.getElementById("birthdayVideo");
 
-    if(music){
+    if (music) {
         music.pause();
         music.currentTime = 0;
+        music.load();
     }
 
-    if(video){
+    if (video) {
         video.pause();
         video.currentTime = 0;
+        video.load();
     }
 
 }
-
 
 
 /* ========================================= */
@@ -96,6 +97,8 @@ function stopAllMedia(){
 
 function openFile1(){
 
+    stopAllMedia();
+
     scream.classList.remove("play");
     void scream.offsetWidth;
     scream.classList.add("play");
@@ -103,16 +106,6 @@ function openFile1(){
     resetAnimation();
 
     document.querySelector(".cake-page").style.display = "none";
-
-    // stop musik file 2
-    const music = document.getElementById("birthdayMusic");
-    music.pause();
-    music.currentTime = 0;
-
-    // stop video file 3
-    const video = document.getElementById("birthdayVideo");
-    video.pause();
-    video.currentTime = 0;
 
     file2.classList.add("file2-down");
     file3.classList.add("file3-down");
@@ -189,16 +182,13 @@ function openFile1(){
 
 function openFile3(){
 
+    stopAllMedia();
+
     resetAnimation();
 
     document.querySelector(".cake-page").style.display="none";
 
     file3.classList.add("file3-up");
-
-    // stop musik
-    const music=document.getElementById("birthdayMusic");
-    music.pause();
-    music.currentTime=0;
 
     // play video
     const video = document.getElementById("birthdayVideo");
@@ -206,15 +196,10 @@ function openFile3(){
     // video.pause();
     // video.currentTime = 0;
     // video.load();
+    video.currentTime = 0;
     video.volume = 0.2;
 
-    video.pause();
-    video.currentTime = 0;
-    video.load();
-
-    video.oncanplay = () => {
-        video.play();
-    };
+    video.play().catch(() => {});
 
     const page = document.querySelector(".cake-page");
 
@@ -294,6 +279,8 @@ let blown = false;
 // }
 
 function openFile2(){
+
+    stopAllMedia();
 
     resetAnimation();
 
